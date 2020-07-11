@@ -4,8 +4,8 @@ This repository contains the material for each week workshop about the developme
 
 ## How is this repository structured?
 
-For the weeks covering a workshop on the chatbots I will push on this repository a directory for that week. The directory will contain a subdirectory 'material' and and empty subdirectory 'solution'.
-The subdirectory 'solution' will be updated at the end of the week with the solution of the workshop including the proposed exercises for that week. I recommend to do the exercises without peaking at the solutions!!!
+For the weeks covering a workshop on the chatbots I will push on this repository a directory for that week. The directory will contain a subdirectory 'material'.
+I will push a subdirectory 'solution' at the end of each week with the solution of the workshop, including the solution for the proposed exercises for that week. I recommend to do the exercises without peaking at the solutions!!!
 
 ## How can I use this repository?
 
