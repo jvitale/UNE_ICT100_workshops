@@ -34,13 +34,5 @@ function speak(botName, sentence) {
     } else {
         utterance.voice = bitVoice;
     }
-
-    // to control the speech flow for the balloons
-    utterance.onstart = function(event) {
-        manager.publish('speech_event', {eventType: 'start', bot: botName, speech: sentence});
-    }
-    utterance.onend = function(event) {
-        manager.publish('speech_event', {eventType: 'end', bot: botName, speech: sentence});
-    }
     speechSynthesis.speak(utterance);
 }
