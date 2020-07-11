@@ -4,8 +4,8 @@ This repository contains the material for each week workshop about the developme
 
 ## How is this repository structured?
 
-For the weeks covering a workshop on the chatbots I will push on this repository a directory for that week. The directory will contain a subdirectory 'material' and and empty subdirectory 'solution'.
-The subdirectory 'solution' will be updated at the end of the week with the solution of the workshop including the proposed exercises for that week. I recommend to do the exercises without peaking at the solutions!!!
+For the weeks covering a workshop on the chatbots I will push on this repository a directory for that week. The directory will contain a subdirectory 'material'.
+I will push a subdirectory 'solution' at the end of each week with the solution of the workshop, including the solution for the proposed exercises for that week. I recommend to do the exercises without peaking at the solutions!!!
 
 ## How can I use this repository?
 
@@ -14,7 +14,7 @@ You have two options to use the material in this repository when following a wor
 1. You can download the repository from this page by clicking on 'Code' and then 'Download Zip'. You can then extract the material in the Zip file on your local machine. If you know how to use Git, you can git clone this repository on your local machine and pull the updates (this is not necessary if you never used Git);
 2. You can go to [https://codesandbox.io/](https://codesandbox.io/) and create an empty sandbox project. Choose 'Import project' and in the text input under 'Import from GitHub' paste this url: https://github.com/jvitale/UNE_ICT100_workshops.git . Then click on the URL generated under the text input. It will open a new window with the tree structure of the repository.
 
-If you are downloading the files on your local machine, I recommend you to use Visual Studio Code (free for several OS [here](https://code.visualstudio.com/?wt.mc_id=vscom_downloads)). Then install Live Server by opening Visual Studio Code, click on the icon on the left with the little blocks (the one under the play button with a bug). It will show a window where you can type the name of the desired extension. Type 'Live Server' and click 'Install' next to the Live Server option that will appear from the list.
+If you are downloading the files on your local machine, I recommend you to use Visual Studio Code (free for several OS [here](https://code.visualstudio.com/download)). Then install Live Server by opening Visual Studio Code, click on the icon on the left with the little blocks (the one under the play button with a bug). It will show a window where you can type the name of the desired extension. Type 'Live Server' and click 'Install' next to the Live Server option that will appear from the list.
 
 If you are using codesandbox.io, navigate the file tree and select the desired week. Then go in the subdirectory 'material'. That's the material for the week's workshop. To test the application, I recommend to click on the button on top of the preview window to open a new window in the browser.
 
