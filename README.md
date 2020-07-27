@@ -4,7 +4,7 @@ This repository contains the material for each week workshop about the developme
 
 ## How is this repository structured?
 
-For the weeks covering a workshop on the chatbots I will push on this repository a directory for that week. The directory will contain a subdirectory 'material'.
+For the weeks covering a workshop on the chatbots I will push on this repository a directory for that week. The directory will contain a subdirectory 'material' you can use to develop the code by following the video tutorial. The directory will also contain a subdirectory 'video' with the code developed during the video tutorial (for your convenience to double check that you have no typos and bugs in your code).
 I will push a subdirectory 'solution' at the end of each week with the solution of the workshop, including the solution for the proposed exercises for that week. I recommend to do the exercises without peaking at the solutions!!!
 
 ## How can I use this repository?
