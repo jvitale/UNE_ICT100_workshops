@@ -3,6 +3,8 @@ var faceDescriptors = [];
 // function to extract the identity features
 // and store them with the user name
 async function storeUserIdentity(name){
+
+    // attempting to detect a face three times
     let detections = [];
     let attempts = 0;
     while (detections.length == 0 && attempts < 3){
@@ -14,7 +16,10 @@ async function storeUserIdentity(name){
     }
     
     if (detections.length > 0){
-        let userFaceDescriptors = new faceapi.LabeledFaceDescriptors(name, [detections[0].descriptor]);
+        let userFaceDescriptors = new faceapi.LabeledFaceDescriptors(
+            name, 
+            [detections[0].descriptor]
+        );
         faceDescriptors.push(userFaceDescriptors);
         return true;
     } else {
@@ -31,6 +36,7 @@ async function recogniseFace(){
         return false;
     }
 
+    // attempting to detect a face three times
     let detections = [];
     let attempts = 0;
     while (detections.length == 0 && attempts < 3){
@@ -38,6 +44,7 @@ async function recogniseFace(){
             videoInput, 
             new faceapi.TinyFaceDetectorOptions()
         ).withFaceLandmarks().withFaceDescriptors();
+        attempts += 1;
     }
 
     if (detections.length > 0){

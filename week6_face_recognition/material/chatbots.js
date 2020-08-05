@@ -116,7 +116,6 @@ const picoChatListener = manager.subscribe(
             }
 
             // execute the speech
-            showTextBalloon(message.bot, botSpeech);
             speak(message.bot, botSpeech);
         }
     }
@@ -128,8 +127,7 @@ const bitEmotionalStateListener = manager.subscribe(
     function(message){
         if (message.bot == 'pico' && message.emotionalState == 'happy'){
             // Bit gets jelous
-            let jelousSpeech = 'Hey! Talk to me!'
-            showTextBalloon('bit', jelousSpeech);
+            let jelousSpeech = 'Hey! Talk to me!';
             speak('bit', jelousSpeech);
         }
     }
@@ -140,7 +138,6 @@ const bitChatListener = manager.subscribe(
     function(message){
         if (message.bot == 'bit'){
             let botSpeech = "You said: " + message.content;
-            showTextBalloon(message.bot, botSpeech);
             speak(message.bot, botSpeech);
         }
     }
@@ -196,7 +193,7 @@ var engagementListener = manager.subscribe(
                 speak('bit', 'Nice to see you!');
                 // and then remember to set
                 // the global variable userGreeted to true
-                userGreeted = true
+                userGreeted = true;
             }
         } else {
             // Exercise (3): checking the time before disengaging

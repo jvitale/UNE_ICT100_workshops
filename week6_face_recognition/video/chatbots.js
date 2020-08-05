@@ -66,7 +66,7 @@ btnTalkPico.addEventListener(
             function(result){
                 publishChatMessage('pico', result);
             }
-        )
+        );
     }
 )
 
@@ -77,7 +77,7 @@ btnTalkBit.addEventListener(
             function(result){
                 publishChatMessage('bit', result);
             }
-        )
+        );
     }
 )
 
@@ -109,7 +109,7 @@ async function rememberUserIdentity(msg){
             listen((result) => resolve(result));
         }
     ).then((name) => userName = name);
-    await promiseListen
+    await promiseListen;
     await speak(msg.bot, 'Nice to meet you ' + userName);
     await speak(msg.bot, 'Please, face the camera and wait');
     let outcome = await storeUserIdentity(userName);
@@ -138,7 +138,7 @@ var botLogic = [
     ["I love you", manageEmotionalState],
     ["Remember me", rememberUserIdentity],
     ["Recognise me", recogniseUserIdentity]
-]
+];
 
 // function to select the most
 // appropriate behaviour to execute
@@ -152,7 +152,7 @@ function behaviourManager(msg){
     // if we are here, it means we did not find
     // any match for the command, so it is a general speech
     // return false
-    return false
+    return false;
 }
 
 // creating subscribers to the 'user_message' topic
@@ -179,7 +179,7 @@ const bitEmotionalStateListener = manager.subscribe(
     function(message){
         if (message.bot == 'pico' && message.emotionalState == 'happy'){
             // Bit gets jelous
-            let jelousSpeech = 'Hey! Talk to me!'
+            let jelousSpeech = 'Hey! Talk to me!';
             speak('bit', jelousSpeech);
         }
     }
@@ -246,7 +246,7 @@ var engagementListener = manager.subscribe(
                 speak('bit', 'Nice to see you!');
                 // and then remember to set
                 // the global variable userGreeted to true
-                userGreeted = true
+                userGreeted = true;
             }
         } else {
             // we do not only check if the face is not detected anymore

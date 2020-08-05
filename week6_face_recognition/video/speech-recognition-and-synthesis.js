@@ -51,11 +51,11 @@ function speak(botName, sentence) {
         function (resolve, reject) {
             // executor
             // called immediately
-            utterance.onend = resolve
+            utterance.onend = resolve;
         }
     ).then(communicateEndOfSpeech);
 
     speechSynthesis.speak(utterance);
 
-    return endSpeechPromise
+    return endSpeechPromise;
 }
