@@ -67,7 +67,8 @@ Promise.all([
     faceapi.nets.faceRecognitionNet.loadFromUri('models'),
     faceapi.nets.ageGenderNet.loadFromUri('models'), 
     console.log('Model loaded')
-]).then(openWebcam(webcamConstraints)
+]).then(
+    openWebcam(webcamConstraints)
 );
 
 // function to draw the bounding boxes

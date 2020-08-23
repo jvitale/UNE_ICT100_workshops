@@ -96,28 +96,34 @@ async function manageEmotionalState(msg){
     manager.publish('emotional_state_changed', emotionMessage);
 }
 
-function retrieveName(answer){
-    let docx = nlp(answer);
+// function to extract the name from an answer
+function retrieveName(sentence){
+    let docx = nlp(sentence);
     let people = docx.match('#Person').json();
 
     if (people.length > 0){
+        // we assume that the name of the person
+        // is the first match
         return people[0].text;
     } else {
         return '';
     }
 }
 
+// function to check if the answer is yes or not
 function isAnswerYes(answer){
     let docx = nlp(answer);
     return docx.has('(yes|sure|affermative|correct|definitely|obviously|true)');
 }
 
+// function to manage the dialogue to ask
+// the name of the user
 async function askName(bot, maxAttempts){
     let userName = '';
     let nAttempts = 0;
     while (userName === '' && nAttempts < maxAttempts){
         let promiseListen = new Promise(
-            (resolve, reject) => {
+            (resolve) => {
                 listen((result) => resolve(result));
             }
         ).then((answer) => userName = retrieveName(answer));
@@ -125,15 +131,15 @@ async function askName(bot, maxAttempts){
         nAttempts += 1;
         if (userName === ''){
             if (nAttempts < maxAttempts){
-                await speak(bot, 'Sorry, I can\'t get your name. What is your name?');
+                await speak(bot, 'Sorry, I cannot get your name. What is your name?');
             } else {
                 return '';
             }
         } else {
-            await speak(bot, 'You said that your name is ' + userName + '?');
+            await speak(bot, 'Did you say that your name is ' + userName + '?');
             let isCorrect = false;
             let promiseCheck = new Promise(
-                (resolve, reject) => {
+                (resolve) => {
                     listen((result) => resolve(result));
                 }
             ).then((answer) => isCorrect = isAnswerYes(answer));
@@ -142,11 +148,11 @@ async function askName(bot, maxAttempts){
                 return userName;
             } else {
                 if (nAttempts < maxAttempts){
+                    userName = '';
                     await speak(bot, 'Oh ok, let\'s try again. What is your name?');
                 } else {
                     return '';
                 }
-                userName = '';
             }
         }
     }
@@ -159,8 +165,8 @@ async function rememberUserIdentity(msg){
 
     await speak(msg.bot, 'Ok, I will remember your identity');
     await speak(msg.bot, 'What is your name?');
-    
     let userName = await askName(msg.bot, 3);
+
     if (userName === ''){
         await speak(msg.bot, 'Sorry but I was not able to get your name');
         return false;
@@ -212,6 +218,8 @@ async function recogniseUserAgeAndGender(msg){
     }
 }
 
+// function to manage the behaviour
+// for every command that starts with "Guess my"
 async function guessingGame(msg){
     let docx = nlp(msg.content);
     let whatToGuess = docx.match('Guess my [<what>*]').groups('what').text();
@@ -223,14 +231,14 @@ async function guessingGame(msg){
             case 'age':
                 recogniseUserAgeAndGender(msg);
                 break;
-            case 'age and gender':
-                recogniseUserAgeAndGender(msg);
-                break;
             case 'gender':
                 recogniseUserAgeAndGender(msg);
                 break;
+            case 'age and gender':
+                recogniseUserAgeAndGender(msg);
+                break;
             default:
-                await speak(msg.bot, 'Sorry, but I cannot guess your ' + whatToGuess);
+                await speak(msg.bot, 'Sorry but I cannot guess your ' + whatToGuess);
         }
     }
 }
@@ -241,7 +249,7 @@ var botLogic = [
     ["Remember me", rememberUserIdentity],
     ["Recognise me", recogniseUserIdentity],
     ["Who am I", recogniseUserIdentity],
-    ["Guess my [<what>*]", guessingGame]
+    ["Guess my [<what>*]", guessingGame],
 ];
 
 // function to select the most
